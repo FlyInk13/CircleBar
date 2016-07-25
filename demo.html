@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>CircleBar Demo</title>
+    <style>
+      div{margin:10px}
+    </style>
+    <script src="CircleBar.js"/>
+  </head>
+  <body>
+    <script>
+      var cb1 = new CircleBar(document.body,{size:104,lineSize:4});
+      new CircleBar(document.body,{size:120,prefix:"Ram: ",colorNormal:"#0094FF",lineSize:12,padding:0,colorLine:"rgba(255,255,255,.2)",background:"transparent"}).set(25);
+      new CircleBar(document.body,{size:75,lineSize:5,background:"#fff",colorNormal:"#222",colorLine:"rgba(0,0,0,.5)",colorText:"#222"}).set(50);
+      new CircleBar(document.body,{size:100,postfix:""}).set(75);
+      var cb2 = new CircleBar(document.body,{size:125,padding:10}).set(85);
+
+      var i = 0;
+      setInterval(function(){
+      	if(i>100)i = 0;
+      	cb1.set(i++);
+      },200);
+  </script>
+  </body>
+</html>

@@ -25,7 +25,6 @@ function CircleBar(el,options){
 		styleDiv:"display: inline-block;position: relative;border-radius: 100%;text-align: center;",//Стиль элемента
 		styleText:"display: inline-block;line-height:0px;padding-top:50%;width:100%;position: absolute;left:0px;",//Стиль текста
 		colorText:"#fff",//Цвет текста 
-		colorBad:"#f44336",//Цвет полоски после badValueMin
 		colorNormal:"#fff",//Нормальный цвет полоски
 		colorLine:"transparent",//Цвет остальной части полоски
 		id:""//ID элемента
@@ -63,13 +62,13 @@ function CircleBar(el,options){
 				this.cricleBar.setAttributeNS(null,"r",this.radius-options.padding-options.lineSize);
 				this.cricleBar.setAttributeNS(null,"cx",this.radius);
 				this.cricleBar.setAttributeNS(null,"cy",this.radius);
-				this.cricleBar.lineSize = Math.PI*(options.size);//Длинна линий
+				this.cricleBar.lineSize = Math.PI*(options.size-(options.padding+options.lineSize)*2);//Длинна линий
 				this.cricleBar.setAttributeNS(null,"stroke-dasharray",this.cricleBar.lineSize);//Размер штриха линий
 	this.set = function(val){//Функция установки значения 
 		if(typeof val !== "number")return console.error("TypeError: Failed to execute 'set' on 'CircleBar': 1 argument required, but only 0 present.");
 		val = val % 100;//Убераем лишнее
-		this.cricleBar.setAttribute("stroke-dashoffset",((100-val)/100)*this.cricleBar.lineSize);//Расчитываем и указываем отступ
-		if(val >= options.badValueMin){//Указываем цвет
+		this.cricleBar.setAttribute("stroke-dashoffset",((100-val)/100)*(this.cricleBar.lineSize-options.padding));//Расчитываем и указываем отступ
+		if(val >= options.badValueMin && options.colorBad){//Указываем цвет
 			this.cricleBar.style.stroke = options.colorBad;
 		}else{
 			this.cricleBar.style.stroke = options.colorNormal;

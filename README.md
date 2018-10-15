@@ -1,7 +1,7 @@
 # CircleBar
 Генератор круглых прогресс баров с различными настройками на чистом JS с использованием SVG 
 
-[Demo](https://CircleBar.github.io/FlyInk13/demo.html)
+[Demo](https://flyink13.github.io/CircleBar/demo.html)
 
 ```javascript
   // Пример использования
